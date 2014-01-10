@@ -10,7 +10,7 @@ import Control.Concurrent.MVar
 import ChatClient
 import GlobalFunctions
 readForever h = hGetLine h >>= \content -> putStrLn content >> readForever h;
-loopGet nick handler = print (nick ++ " >") >> getLine >>= \a -> (sendMessage handler (show (1,a))) >> loopGet nick handler;
+loopGet nick handler = getLine >>= \a -> (sendMessage handler (show (1,a))) >> loopGet nick handler;
 
 getNick connectionHandler = do
 	nick <-getLine
